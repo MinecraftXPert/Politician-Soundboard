@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+}
+
+#main {
+    background-color: rgb(203, 222, 245);
+    display: flex;
+}
+
+#politicians {
+    background-image: url("./images/banner.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    border-top-right-radius: 40px;
+    font-family: sans-serif;
+    width: max(300px, 30%);
+    height: 100vh;
+    box-shadow: 8px -2px 15px black;
+    z-index: 10;
+}
+
+#politicians h1 {
+    font-size: 50px;
+    margin: 5px;
+    margin-left: 15px;
+    color: black;
+    /* repeat shadow for increased opacity */
+    text-shadow: white 0px 0 24px, white 0px 0 24px;
+}
+
+.politicians-item {
+    display: flex;
+    background-color: rgb(0, 0, 0, 0.8);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: calc(100% - 10px*2 - 20px);
+    transform: translateX(20px);
+    color: white;
+    display: flex;
+    font-size: 38px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.politicians-item:hover {
+    background-color: rgb(0, 0, 0, 0.9);
+}
+
+.politicians-item div {
+    text-align: center;
+    width: 100%;
+}
+
+.politicians-item img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+#content-wrapper {
+    background-image: url("./images/background.webp");
+    background-size: cover;
+    background-position: center;
+    width: calc(100% - max(300px, 30%));
+    height: 100vh;
+}
+
+#content {
+    padding: 40px;
+}
+
+.clip-button {
+    background-color: white;
+    font-family: sans-serif;
+    font-size: 26px;
+    padding: 14px;
+    border-radius: 10px;
+    width: fit-content;
+    cursor: pointer;
+}

@@ -4,8 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politician Soundboard</title>
+
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Testing now</h1>
+    <div id="main">
+        <div id="politicians">
+            <h1>Politician</h1>
+            <div class="politicians-item">
+                <img src="./images/pfp-biden.webp">
+                <div>Joe Biden</div>
+            </div>
+            <div class="politicians-item">
+                <img src="./images/pfp-trump.webp">
+                <div>Donald Trump</div>
+            </div>
+        </div>
+        <div id="content-wrapper">
+            <div id="content"></div>
+        </div>
+    </div>
+
+    <script>
+const bidenQuotes = [
+    {
+        label: "You Ain't Black"
+    }
+];
+
+const contentEl = document.getElementById("content");
+
+let vidEl = null;
+
+function renderQuotes(politicianQuotes) {
+    for (let i = 0; i < politicianQuotes.length; i++) {
+        const quote = politicianQuotes[i];
+        let el = document.createElement("div");
+        el.classList.add("clip-button");
+        el.innerText = quote.label;
+        contentEl.append(el);
+
+        el.addEventListener("click", () => {
+            const fileName = quote.label
+            .toLowerCase()
+            .split(" ")
+            .map(word => word
+                .split("")
+                .filter(c => c.charCodeAt(0) >= 97 && c.charCodeAt(0) <= 122)
+                .join("")
+            )
+            .join("-");
+
+            if (vidEl != null) {
+                vidEl.remove();
+            }
+
+            vidEl = document.createElement("video");
+            vidEl.controls = true;
+            vidEl.width = "600";
+            vidEl.autoplay = true;
+            
+            let sourceEl = document.createElement("source");
+            sourceEl.src = `./videos/${fileName}-compressed.webm`;
+            sourceEl.type = "video/webm";
+
+            vidEl.append(sourceEl);
+
+            contentEl.append(vidEl);
+        });
+    }
+    
+}
+
+renderQuotes(bidenQuotes);
+
+    </script>
+
 </body>
 </html>
